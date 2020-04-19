@@ -56,6 +56,14 @@
     "children": [
       {
         "id": "2.1",
+        "expression": "$context.errors.cnpj == '3'",
+        "jumpTo": {
+          "node": "6.1",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "id": "2.2",
         "expression": "$context.extracted_entities.VALID_CNPJ == true",
         "answerCode": "01_CNPJ_CONFIRMACAO",
         "children": [
@@ -66,38 +74,95 @@
             "children": [
               {
                 "id": "2.1.1.1",
-                "expression": "$context.extracted_entities.TOKEN_REGEX == true",
-                "answerCode": "TOKEN_INT",
+                "expression": "$context.sjt_status == 'CNPJ_FOUND_ON_SJT'",
+                "jumpTo": {
+                  "node": "2.1.1.1.1",
+                  "type": "CONDITION"
+                },
                 "children": [
                   {
                     "id": "2.1.1.1.1",
-                    "expression": "$context.fluxo == 'FLUXOA'",
-                    "jumpTo": {
-                      "node": "3.1.1",
-                      "type": "CONDITION"
-                    }
+                    "expression": "$context.extracted_entities.TOKEN_REGEX == true",
+                    "answerCode": "TOKEN_INT",
+                    "children": [
+                      {
+                        "id": "2.1.1.1.1.1",
+                        "expression": "$context.fluxo == 'FLUXOA'",
+                        "jumpTo": {
+                          "node": "3.1.1",
+                          "type": "CONDITION"
+                        }
+                      },
+                      {
+                        "id": "2.1.1.1.1.2",
+                        "expression": "$context.fluxo == 'FLUXOB'",
+                        "jumpTo": {
+                          "node": "3.2.1",
+                          "type": "CONDITION"
+                        }
+                      },
+                      {
+                        "id": "2.1.1.1.1.3",
+                        "expression": "$context.token_idk == '3'",
+                        "jumpTo": {
+                          "node": "0",
+                          "type": "CONDITION"
+                        }
+                      },
+                      {
+                        "id": "2.1.1.1.1.4",
+                        "expression": "default",
+                        "jumpTo": {
+                          "node": "2.1.1.1.1",
+                          "type": "WAIT_INPUT"
+                        }
+                      }
+                    ]
                   },
                   {
                     "id": "2.1.1.1.2",
-                    "expression": "$context.fluxo == 'FLUXOB'",
+                    "expression": "#DECISION_INT_SIM",
+                    "answerCode": "SMS_REENVIO",
                     "jumpTo": {
-                      "node": "3.2.1",
-                      "type": "CONDITION"
+                      "node": "2.1.1.1.1",
+                      "type": "WAIT_INPUT"
                     }
                   },
                   {
                     "id": "2.1.1.1.3",
-                    "expression": "$context.token_idk == '3'",
+                    "expression": "@1",
                     "jumpTo": {
-                      "node": "0",
-                      "type": "CONDITION"
+                      "node": "2.1.1.1.2",
+                      "type": "RESPOND"
                     }
                   },
                   {
                     "id": "2.1.1.1.4",
-                    "expression": "default",
+                    "expression": "#RECEBER_NOVO_SMS",
                     "jumpTo": {
-                      "node": "2.1.1.1",
+                      "node": "2.1.1.1.2",
+                      "type": "RESPOND"
+                    }
+                  },
+                  {
+                    "id": "2.1.1.1.5",
+                    "expression": "#DECISION_INT_CANCELAR_ATENDIMENTO",
+                    "answerCode": "CANCELAR_ATENDIMENTO"
+                  },
+                  {
+                    "id": "2.1.1.1.6",
+                    "expression": "@2",
+                    "jumpTo": {
+                      "node": "2.1.1.1.5",
+                      "type": "RESPOND"
+                    }
+                  },
+                  {
+                    "id": "2.1.1.1.6",
+                    "expression": "default",
+                    "answerCode": "SMS_IDK",
+                    "jumpTo": {
+                      "node": "2.1.1.1.1",
                       "type": "WAIT_INPUT"
                     }
                   }
@@ -105,41 +170,18 @@
               },
               {
                 "id": "2.1.1.2",
-                "expression": "#DECISION_INT_SIM",
-                "answerCode": "SMS_REENVIO",
+                "expression": "$context.sjt_status == 'CNPJ_NOT_FOUND_ON_SJT'",
                 "jumpTo": {
-                  "node": "2.1.1.1",
-                  "type": "WAIT_INPUT"
+                  "node": "0",
+                  "type": "CONDITION"
                 }
               },
               {
                 "id": "2.1.1.3",
-                "expression": "@1",
+                "expression": "$context.sjt_status == 'CNPJ_NOT_VALID'",
                 "jumpTo": {
-                  "node": "2.1.1.2",
-                  "type": "RESPOND"
-                }
-              },
-              {
-                "id": "2.1.1.4",
-                "expression": "#DECISION_INT_CANCELAR_ATENDIMENTO",
-                "answerCode": "CANCELAR_ATENDIMENTO"
-              },
-              {
-                "id": "2.1.1.5",
-                "expression": "#DECISION_INT_CANCELAR_ATENDIMENTO",
-                "jumpTo": {
-                  "node": "2.1.1.4",
-                  "type": "RESPOND"
-                }
-              },
-              {
-                "id": "2.1.1.6",
-                "expression": "default",
-                "answerCode": "SMS_IDK",
-                "jumpTo": {
-                  "node": "2.1.1.1",
-                  "type": "WAIT_INPUT"
+                  "node": "2.1",
+                  "type": "CONDITION"
                 }
               }
             ]
@@ -192,14 +234,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "2.2",
-        "expression": "$context.cnpj_idk == '3'",
-        "jumpTo": {
-          "node": "2.1",
-          "type": "WAIT_INPUT"
-        }
       },
       {
         "id": "2.3",
@@ -339,6 +373,30 @@
                     "id": "3.1.2.3.1",
                     "expression": "#DECISION_INT_SIM",
                     "answerCode": "TRANSBORDO_SUGERIDO"
+                  },
+                  {
+                    "id": "3.1.2.3.2",
+                    "expression": "#03_ASSISTENCIA_CONSERTO",
+                    "jumpTo": {
+                      "node": "3.1.2.1",
+                      "type": "RESPOND"
+                    }
+                  },
+                  {
+                    "id": "3.1.2.3.3",
+                    "expression": "#04_MAQUINA_RECOLHA",
+                    "jumpTo": {
+                      "node": "3.1.2.3",
+                      "type": "RESPOND"
+                    }
+                  },
+                  {
+                    "id": "3.1.2.3.4",
+                    "expression": "#02_MAQUINA_TROCA_CONDENADA",
+                    "jumpTo": {
+                      "node": "3.1.2.2",
+                      "type": "RESPOND"
+                    }
                   }
                 ]
               }
@@ -442,11 +500,7 @@
   {
     "id": "4",
     "expression": "#TRANSBORDO_SOLICITADO",
-    "answerCode": "TRANSBORDO_SOLICITADO",
-    "jumpTo": {
-      "node": "5.1",
-      "type": "WAIT_INPUT"
-    }
+    "answerCode": "TRANSBORDO_SOLICITADO"
   },
   {
     "id": "5",
@@ -455,13 +509,82 @@
     "children": [
       {
         "id": "5.1",
-        "expression": "#DECISION_INT_SIM",
-        "answerCode": "TRANSBORDO_SUGERIDO_SIM"
+        "expression": "$context.transbordavel == true",
+        "jumpTo": {
+          "node": "5.1.1",
+          "type": "CONDITION"
+        },
+        "children": [
+          {
+            "id": "5.1.1",
+            "expression": "#DECISION_INT_SIM",
+            "answerCode": "TRANSBORDO_SUGERIDO_SIM"
+          },
+          {
+            "id": "5.2.1",
+            "expression": "default",
+            "answerCode": "CANCELAR_ATENDIMENTO"
+          }
+        ]
       },
       {
         "id": "5.2",
+        "expression": "$context.transbordavel == false",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "id": "5.3",
         "expression": "default",
-        "answerCode": "CANCELAR_ATENDIMENTO"
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "expression": "#TRANSBORDO_GENERICO",
+    "answerCode": "TRANSBORDO_GENERICO",
+    "children": [
+      {
+        "id": "6.1",
+        "expression": "$context.transbordavel == true",
+        "jumpTo": {
+          "node": "6.1.1",
+          "type": "CONDITION"
+        },
+        "children": [
+          {
+            "id": "6.1.1",
+            "expression": "#DECISION_INT_SIM",
+            "answerCode": "TRANSBORDO_GENERICO_SIM"
+          },
+          {
+            "id": "6.2.1",
+            "expression": "default",
+            "answerCode": "CANCELAR_ATENDIMENTO"
+          }
+        ]
+      },
+      {
+        "id": "6.2",
+        "expression": "$context.transbordavel == false",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "id": "6.3",
+        "expression": "default",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
       }
     ]
   }
