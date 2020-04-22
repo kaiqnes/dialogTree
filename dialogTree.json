@@ -11,12 +11,131 @@
       {
         "id": "0.1",
         "expression": "$context.fluxo == 'FLUXOA'",
-        "answerCode": "01_MENU_CVA_345_IDK"
+        "answerCode": "01_MENU_CVA_345_IDK",
+        "children": [
+          {
+            "id": "0.1.1",
+            "expression": "@1",
+            "jumpTo": {
+              "node": "5.1.1",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.1.2",
+            "expression": "#PEDIDO",
+            "jumpTo": {
+              "node": "5.1.1",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.1.3",
+            "expression": "@2",
+            "jumpTo": {
+              "node": "5.1.3",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.1.4",
+            "expression": "#01_MAQUINA_DESAMBIGUACAO",
+            "jumpTo": {
+              "node": "5.1.3",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.1.5",
+            "expression": "@3",
+            "jumpTo": {
+              "node": "5.1.5",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.1.6",
+            "expression": "#02_ASSISTENCIA_LIMPEZA",
+            "jumpTo": {
+              "node": "5.1.5",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.1.7",
+            "expression": "default",
+            "jumpTo": {
+              "node": "0",
+              "type": "CONDITION"
+            }
+          }
+        ]
       },
       {
         "id": "0.2",
         "expression": "$context.fluxo == 'FLUXOB'",
-        "answerCode": "02_MENU_CVA_12_IDK"
+        "answerCode": "02_MENU_CVA_12_IDK",
+        "children": [
+          {
+            "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
+            "id": "0.2.1",
+            "expression": "@1",
+            "jumpTo": {
+              "node": "5.2.1",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.2.2",
+            "expression": "#CRIAR_PEDIDO",
+            "jumpTo": {
+              "node": "5.2.1",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
+            "id": "0.2.3",
+            "expression": "@2",
+            "jumpTo": {
+              "node": "5.2.3",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.2.4",
+            "expression": "#STATUS_DO_PEDIDO",
+            "jumpTo": {
+              "node": "5.2.3",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
+            "id": "0.2.5",
+            "expression": "@3",
+            "jumpTo": {
+              "node": "5.2.5",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.2.6",
+            "expression": "#03_PEDIDO_INDENIZACAO",
+            "jumpTo": {
+              "node": "5.2.5",
+              "type": "RESPOND"
+            }
+          },
+          {
+            "id": "0.2.7",
+            "expression": "default",
+            "jumpTo": {
+              "node": "0",
+              "type": "CONDITION"
+            }
+          }
+        ]
       },
       {
         "id": "0.3",
@@ -36,50 +155,55 @@
     ]
   },
   {
-    "_TRANSBORDO_GENERICO": "",
     "id": "1",
-    "expression": "$context.errorsCount == '3'",
+    "expression": "default",
     "jumpTo": {
       "node": "1.1",
       "type": "CONDITION"
     },
     "children": [
       {
-        "_HINT": "Caso esteja dentro do horário de atendimento",
+        "_HINT": "user autenticado - continuar",
         "id": "1.1",
-        "expression": "$context.transbordavel == true",
+        "expression": "$context.autenticado == true",
         "jumpTo": {
-          "node": "1.1.1",
+          "node": "2",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "_HINT": "não autenticado - mandar autenticar",
+        "id": "1.2",
+        "expression": "default",
+        "jumpTo": {
+          "node": "1.2.1",
           "type": "CONDITION"
         },
         "children": [
           {
-            "_HINT": "Caso user tenha digitado sim",
-            "id": "1.1.1",
-            "expression": "#DECISION_INT_SIM",
-            "answerCode": "TRANSBORDO_GENERICO_SIM"
+            "id": "1.2.1",
+            "expression": "$context.first_try == true",
+            "jumpTo": {
+              "node": "7",
+              "type": "RESPOND"
+            }
           },
           {
-            "id": "1.1.2",
+            "id": "1.2.2",
             "expression": "default",
-            "answerCode": "CANCELAR_ATENDIMENTO"
+            "jumpTo": {
+              "node": "7.1",
+              "type": "CONDITION"
+            }
           }
         ]
-      },
-      {
-        "id": "1.2",
-        "expression": "default",
-        "jumpTo": {
-          "node": "1",
-          "type": "CONDITION"
-        }
       }
     ]
   },
   {
-    "_TRANSBORDO_SUGERIDO": "Similar ao transbordo genérico, porém direciona p/ filas especificas",
+    "_TRANSBORDO_GENERICO": "",
     "id": "2",
-    "expression": "$context.suggestTransbordo == true",
+    "expression": "$context.errorsCount == '3'",
     "jumpTo": {
       "node": "2.1",
       "type": "CONDITION"
@@ -98,12 +222,19 @@
             "_HINT": "Caso user tenha digitado sim",
             "id": "2.1.1",
             "expression": "#DECISION_INT_SIM",
-            "answerCode": "TRANSBORDO_SUGERIDO_SIM"
+            "answerCode": "TRANSBORDO_GENERICO_SIM",
+            "jumpTo": {
+              "node": "0",
+              "type": "WAIT_INPUT"
+            }
           },
           {
             "id": "2.1.2",
             "expression": "default",
-            "answerCode": "CANCELAR_ATENDIMENTO"
+            "jumpTo": {
+              "node": "0",
+              "type": "CONDITION"
+            }
           }
         ]
       },
@@ -118,74 +249,118 @@
     ]
   },
   {
-    "_HINT": "O usuário solicita o transbordo. É direcionado para a fila 'outros'. Não necessita confirmação",
+    "_TRANSBORDO_SUGERIDO": "Similar ao transbordo genérico, porém direciona p/ filas especificas",
     "id": "3",
+    "expression": "$context.suggestTransbordo == true",
+    "jumpTo": {
+      "node": "3.1",
+      "type": "CONDITION"
+    },
+    "children": [
+      {
+        "_HINT": "Caso esteja dentro do horário de atendimento",
+        "id": "3.1",
+        "expression": "$context.transbordavel == true",
+        "jumpTo": {
+          "node": "3.1.1",
+          "type": "CONDITION"
+        },
+        "children": [
+          {
+            "_HINT": "Caso user tenha digitado sim",
+            "id": "3.1.1",
+            "expression": "#DECISION_INT_SIM",
+            "answerCode": "TRANSBORDO_SUGERIDO_SIM"
+          },
+          {
+            "id": "3.1.2",
+            "expression": "default",
+            "jumpTo": {
+              "node": "4",
+              "type": "CONDITION"
+            }
+          }
+        ]
+      },
+      {
+        "id": "3.2",
+        "expression": "default",
+        "jumpTo": {
+          "node": "4",
+          "type": "CONDITION"
+        }
+      }
+    ]
+  },
+  {
+    "_TRANSBORDO_SOLICITADO": "O usuário solicita o transbordo. É direcionado para a fila 'outros'. Não necessita confirmação",
+    "id": "4",
     "expression": "#TRANSBORDO_SOLICITADO",
     "answerCode": "TRANSBORDO_SOLICITADO"
   },
   {
     "_MENUS": "Exibe menus diferentes de acordo com as informações que temos no context",
-    "id": "4",
+    "id": "5",
     "expression": "#04_MENU_PRINCIPAL",
     "jumpTo": {
-      "node": "4.1",
+      "node": "5.1",
       "type": "CONDITION"
     },
     "children": [
       {
-        "id": "4.1",
+        "id": "5.1",
         "expression": "$context.fluxo == 'FLUXOA'",
         "answerCode": "04_MENU_PRINCIPAL_CVA_3_4_5",
         "children": [
           {
-            "id": "4.1.1",
+            "id": "5.1.1",
             "expression": "@1",
             "answerCode": "PEDIDO",
             "children": [
               {
                 "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
-                "id": "4.1.1.1",
+                "id": "5.1.1.1",
                 "expression": "@1",
                 "answerCode": "CRIAR_PEDIDO"
               },
               {
-                "id": "4.1.1.2",
+                "id": "5.1.1.2",
                 "expression": "#CRIAR_PEDIDO",
                 "jumpTo": {
-                  "node": "4.1.1.1",
+                  "node": "5.1.1.1",
                   "type": "RESPOND"
                 }
               },
               {
                 "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
-                "id": "4.1.1.3",
+                "id": "5.1.1.3",
                 "expression": "@2",
                 "answerCode": "STATUS_DO_PEDIDO"
               },
               {
-                "id": "4.1.1.4",
+                "id": "5.1.1.4",
                 "expression": "#STATUS_DO_PEDIDO",
                 "jumpTo": {
-                  "node": "4.1.1.3",
+                  "node": "5.1.1.3",
                   "type": "RESPOND"
                 }
               },
               {
                 "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
-                "id": "4.1.1.5",
+                "id": "5.1.1.5",
                 "expression": "@3",
                 "answerCode": "03_PEDIDO_INDENIZACAO"
               },
               {
-                "id": "4.1.1.6",
+                "id": "5.1.1.6",
                 "expression": "#03_PEDIDO_INDENIZACAO",
                 "jumpTo": {
-                  "node": "4.1.1.5",
+                  "node": "5.1.1.5",
                   "type": "RESPOND"
                 }
               },
               {
-                "id": "4.1.1.7",
+                "id": "5.1.1.7",
                 "expression": "default",
                 "jumpTo": {
                   "node": "0",
@@ -195,131 +370,147 @@
             ]
           },
           {
-            "id": "4.1.2",
+            "id": "5.1.2",
             "expression": "#PEDIDO",
             "jumpTo": {
-              "node": "4.1.1",
+              "node": "5.1.1",
               "type": "RESPOND"
             }
           },
           {
-            "id": "4.1.3",
+            "id": "5.1.3",
             "expression": "@2",
             "answerCode": "01_MAQUINA_DESAMBIGUACAO",
             "children": [
               {
-                "id": "4.1.2.1",
+                "id": "5.1.2.1",
                 "expression": "@1",
                 "answerCode": "03_ASSISTENCIA_CONSERTO"
               },
               {
-                "id": "4.1.2.4",
+                "id": "5.1.2.4",
                 "expression": "#03_ASSISTENCIA_CONSERTO",
                 "jumpTo": {
-                  "node": "4.1.2.1",
+                  "node": "5.1.2.1",
                   "type": "RESPOND"
                 }
               },
               {
-                "id": "4.1.2.2",
+                "id": "5.1.2.2",
                 "expression": "@2",
                 "answerCode": "02_MAQUINA_TROCA_CONDENADA"
               },
               {
-                "id": "4.1.2.5",
+                "id": "5.1.2.5",
                 "expression": "#02_MAQUINA_TROCA_CONDENADA",
                 "jumpTo": {
-                  "node": "4.1.2.2",
+                  "node": "5.1.2.2",
                   "type": "RESPOND"
                 }
               },
               {
-                "id": "4.1.2.3",
+                "id": "5.1.2.3",
                 "expression": "@3",
                 "answerCode": "04_MAQUINA_RECOLHA"
               },
               {
-                "id": "4.1.2.6",
+                "id": "5.1.2.6",
                 "expression": "#04_MAQUINA_RECOLHA",
                 "jumpTo": {
-                  "node": "4.1.2.3",
+                  "node": "5.1.2.3",
                   "type": "RESPOND"
+                }
+              },
+              {
+                "id": "5.1.2.7",
+                "expression": "default",
+                "jumpTo": {
+                  "node": "0",
+                  "type": "CONDITION"
                 }
               }
             ]
           },
           {
-            "id": "4.1.4",
+            "id": "5.1.4",
             "expression": "#01_MAQUINA_DESAMBIGUACAO",
             "jumpTo": {
-              "node": "4.1.3",
+              "node": "5.1.3",
               "type": "RESPOND"
             }
           },
           {
-            "id": "4.1.5",
+            "id": "5.1.5",
             "expression": "@3",
             "answerCode": "02_ASSISTENCIA_LIMPEZA"
           },
           {
-            "id": "4.1.6",
+            "id": "5.1.6",
             "expression": "#02_ASSISTENCIA_LIMPEZA",
             "jumpTo": {
-              "node": "4.1.5",
+              "node": "5.1.5",
               "type": "RESPOND"
+            }
+          },
+          {
+            "id": "5.1.7",
+            "expression": "default",
+            "jumpTo": {
+              "node": "0",
+              "type": "CONDITION"
             }
           }
         ]
       },
       {
-        "id": "4.2",
+        "id": "5.2",
         "expression": "$context.fluxo == 'FLUXOB'",
         "answerCode": "06_MENU_PRINCIPAL_CVA_1_2",
         "children": [
           {
             "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
-            "id": "4.2.1",
+            "id": "5.2.1",
             "expression": "@1",
             "answerCode": "CRIAR_PEDIDO"
           },
           {
-            "id": "4.2.2",
+            "id": "5.2.2",
             "expression": "#CRIAR_PEDIDO",
             "jumpTo": {
-              "node": "4.2.1",
+              "node": "5.2.1",
               "type": "RESPOND"
             }
           },
           {
             "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
-            "id": "4.2.3",
+            "id": "5.2.3",
             "expression": "@2",
             "answerCode": "STATUS_DO_PEDIDO"
           },
           {
-            "id": "4.2.4",
+            "id": "5.2.4",
             "expression": "#STATUS_DO_PEDIDO",
             "jumpTo": {
-              "node": "4.2.3",
+              "node": "5.2.3",
               "type": "RESPOND"
             }
           },
           {
             "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
-            "id": "4.2.5",
+            "id": "5.2.5",
             "expression": "@3",
             "answerCode": "03_PEDIDO_INDENIZACAO"
           },
           {
-            "id": "4.2.6",
+            "id": "5.2.6",
             "expression": "#03_PEDIDO_INDENIZACAO",
             "jumpTo": {
-              "node": "4.2.5",
+              "node": "5.2.5",
               "type": "RESPOND"
             }
           },
           {
-            "id": "4.2.7",
+            "id": "5.2.7",
             "expression": "default",
             "jumpTo": {
               "node": "0",
@@ -330,7 +521,7 @@
       },
       {
         "_HINT": "TODO: CRIAR UMA MSG DEFAULT PARA ESSE CASO - o que fazer quando o user pede menu e não está autenticado?",
-        "id": "4.3",
+        "id": "5.3",
         "expression": "default",
         "answerCode": "None"
       }
@@ -338,126 +529,142 @@
   },
   {
     "_CANCELAR": "",
-    "id": "5",
+    "id": "6",
     "expression": "#CANCELAR_ATENDIMENTO",
     "answerCode": "CANCELAR_ATENDIMENTO"
   },
   {
     "_AUTENTICACAO": "",
-    "id": "6",
+    "id": "7",
     "expression": "#01_GREETING",
     "answerCode": "01_GREETING",
     "children": [
       {
-        "id": "6.1",
-        "expression": "$context.errors.cnpj == '3'",
+        "id": "7.1",
+        "expression": "$context.helloMessage == true",
         "jumpTo": {
           "node": "0",
           "type": "CONDITION"
         }
       },
       {
-        "id": "6.2",
+        "id": "7.2",
+        "expression": "$context.welcomeBackMessage == true",
+        "jumpTo": {
+          "node": "7.4.1.1.1",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "id": "7.3",
+        "expression": "$context.errors.cnpj == '3'",
+        "jumpTo": {
+          "node": "2.1",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "id": "7.4",
         "expression": "$context.extracted_entities.VALID_CNPJ == true",
         "answerCode": "01_CNPJ_CONFIRMACAO",
         "children": [
           {
-            "id": "6.1.1",
+            "id": "7.4.1",
             "expression": "#DECISION_INT_SIM",
             "answerCode": "SMS_AUTENTICACAO",
             "children": [
               {
-                "id": "6.1.1.1",
+                "id": "7.4.1.1",
                 "expression": "$context.sjt_status == 'CNPJ_FOUND_ON_SJT'",
                 "jumpTo": {
-                  "node": "6.1.1.1.1",
+                  "node": "7.4.1.1.1",
                   "type": "CONDITION"
                 },
                 "children": [
                   {
-                    "id": "6.1.1.1.1",
+                    "id": "7.4.1.1.1",
                     "expression": "$context.extracted_entities.TOKEN_REGEX == true",
                     "answerCode": "TOKEN_INT",
                     "children": [
                       {
-                        "id": "6.1.1.1.1.1",
+                        "id": "7.4.1.1.1.1",
                         "expression": "$context.errors.token == '3'",
                         "jumpTo": {
-                          "node": "0",
+                          "node": "2.1",
                           "type": "CONDITION"
                         }
                       },
                       {
-                        "id": "6.1.1.1.1.2",
+                        "id": "7.4.1.1.1.2",
                         "expression": "$context.fluxo == 'FLUXOA'",
                         "jumpTo": {
-                          "node": "4.1.1",
+                          "node": "5.1.1",
                           "type": "CONDITION"
                         }
                       },
                       {
-                        "id": "6.1.1.1.1.3",
+                        "id": "7.4.1.1.1.3",
                         "expression": "$context.fluxo == 'FLUXOB'",
                         "jumpTo": {
-                          "node": "4.1.1.1",
+                          "node": "5.1.1.1",
                           "type": "CONDITION"
                         }
                       },
                       {
                         "_HINT": "CRIAR CENÁRIO PARA VALIDAR ERRO - TOKEN INVALIDO - USAR NÓS FILHOS",
-                        "id": "6.1.1.1.1.4",
+                        "id": "7.4.1.1.1.4",
                         "expression": "default",
                         "jumpTo": {
-                          "node": "6.1.1.1.1",
+                          "node": "7.4.1.1.1",
                           "type": "CONDITION"
                         }
                       }
                     ]
                   },
                   {
-                    "id": "6.1.1.1.2",
+                    "id": "7.4.1.1.2",
                     "expression": "#DECISION_INT_SIM",
                     "answerCode": "SMS_REENVIO",
                     "jumpTo": {
-                      "node": "6.1.1.1.1",
+                      "node": "7.4.1.1.1",
                       "type": "WAIT_INPUT"
                     }
                   },
                   {
-                    "id": "6.1.1.1.3",
+                    "id": "7.4.1.1.3",
                     "expression": "@1",
                     "jumpTo": {
-                      "node": "6.1.1.1.2",
+                      "node": "7.4.1.1.2",
                       "type": "RESPOND"
                     }
                   },
                   {
-                    "id": "6.1.1.1.4",
+                    "id": "7.4.1.1.4",
                     "expression": "#RECEBER_NOVO_SMS",
                     "jumpTo": {
-                      "node": "6.1.1.1.2",
+                      "node": "7.4.1.1.2",
                       "type": "RESPOND"
                     }
                   },
                   {
-                    "id": "6.1.1.1.5",
+                    "id": "7.4.1.1.5",
                     "expression": "#DECISION_INT_CANCELAR_ATENDIMENTO",
                     "answerCode": "CANCELAR_ATENDIMENTO"
                   },
                   {
-                    "id": "6.1.1.1.0.6",
+                    "id": "7.4.1.1.0.6",
                     "expression": "@2",
                     "jumpTo": {
-                      "node": "6.1.1.1.5",
+                      "node": "7.4.1.1.5",
                       "type": "RESPOND"
                     }
                   },
                   {
-                    "id": "6.1.1.1.6",
+                    "id": "7.4.1.1.6",
                     "expression": "default",
                     "answerCode": "SMS_IDK",
                     "jumpTo": {
-                      "node": "6.1.1.1.1",
+                      "node": "7.4.1.1.1",
                       "type": "WAIT_INPUT"
                     }
                   }
@@ -465,36 +672,44 @@
               },
               {
                 "_HINT": "FLUXO PARA NOVOS CLIENTES",
-                "id": "6.1.1.2",
+                "id": "7.4.1.2",
                 "expression": "$context.sjt_status == 'CNPJ_NOT_FOUND_ON_SJT'",
                 "jumpTo": {
-                  "node": "6.1.1.2.1",
+                  "node": "7.4.1.2.1",
                   "type": "CONDITION"
                 },
                 "children": [
                   {
-                    "id": "6.1.1.2.1",
+                    "id": "7.4.1.2.1",
                     "expression": "@1",
                     "jumpTo": {
-                      "node": "6.1.3",
+                      "node": "7.4.3",
                       "type": "RESPOND"
                     }
                   },
                   {
-                    "id": "6.1.1.2.2",
-                    "expression": "#DECISION_INT_ALTERAR_CNPJ",
+                    "id": "7.4.1.2.2",
+                    "expression": "#DIGITAR_NOVAMENTE",
                     "jumpTo": {
-                      "node": "6.1.1.2.1",
+                      "node": "7.4.1.2.1",
                       "type": "RESPOND"
                     }
                   },
                   {
-                    "id": "6.1.1.2.3",
+                    "id": "7.4.1.2.3",
                     "expression": "@2",
                     "answerCode": "07_CNPJ_NOVO_CLIENTE"
                   },
                   {
-                    "id": "6.1.1.2.4",
+                    "id": "7.4.1.2.4",
+                    "expression": "#NAO_SOU_CLIENTE_KIBON",
+                    "jumpTo": {
+                      "node": "7.4.1.2.3",
+                      "type": "RESPOND"
+                    }
+                  },
+                  {
+                    "id": "7.4.1.2.5",
                     "expression": "default",
                     "jumpTo": {
                       "node": "0",
@@ -504,73 +719,448 @@
                 ]
               },
               {
-                "id": "6.1.1.3",
+                "id": "7.4.1.3",
                 "expression": "$context.sjt_status == 'CNPJ_NOT_VALID'",
                 "jumpTo": {
-                  "node": "6.1",
+                  "node": "7.1",
                   "type": "CONDITION"
                 }
               }
             ]
           },
           {
-            "id": "6.1.2",
+            "id": "7.4.2",
             "expression": "@1",
             "jumpTo": {
-              "node": "6.1.1",
+              "node": "7.4.1",
               "type": "RESPOND"
             }
           },
           {
-            "id": "6.1.3",
+            "id": "7.4.3",
             "expression": "#DECISION_INT_ALTERAR_CNPJ",
             "answerCode": "04_CNPJ_ALTERAR",
             "jumpTo": {
-              "node": "6.1",
+              "node": "7.1",
               "type": "WAIT_INPUT"
             }
           },
           {
-            "id": "6.1.4",
+            "id": "7.4.4",
             "expression": "@2",
             "jumpTo": {
-              "node": "6.1.3",
+              "node": "7.4.3",
               "type": "RESPOND"
             }
           },
           {
-            "id": "6.1.5",
+            "id": "7.4.5",
             "expression": "#DECISION_INT_CANCELAR_ATENDIMENTO",
             "answerCode": "CANCELAR_ATENDIMENTO"
           },
           {
-            "id": "6.1.6",
+            "id": "7.4.6",
             "expression": "@3",
             "jumpTo": {
-              "node": "6.1.5",
+              "node": "7.4.5",
               "type": "RESPOND"
             }
           },
           {
-            "id": "6.1.7",
+            "id": "7.4.7",
             "expression": "default",
             "answerCode": "03_CNPJ_IDK",
             "jumpTo": {
-              "node": "6.1.1",
+              "node": "7.4.1",
               "type": "WAIT_INPUT"
             }
           }
         ]
       },
       {
-        "id": "6.3",
+        "id": "7.5",
         "expression": "default",
         "answerCode": "01_CNPJ_IDK",
         "jumpTo": {
-          "node": "6.1",
+          "node": "7.1",
           "type": "WAIT_INPUT"
         }
       }
     ]
+  },
+  {
+    "id": "8",
+    "expression": "#04_ASSISTENCIA_CONSUMO",
+    "answerCode": "04_ASSISTENCIA_CONSUMO"
+  },
+  {
+    "id": "9",
+    "expression": "#02_GERAL_COMPRA_FREEZER",
+    "answerCode": "02_GERAL_COMPRA_FREEZER"
+  },
+  {
+    "id": "10",
+    "expression": "#04_CADASTRO_PROBLEMA",
+    "answerCode": "04_CADASTRO_PROBLEMA"
+  },
+  {
+    "id": "11",
+    "expression": "#03_PEDIDO_INDENIZACAO",
+    "answerCode": "03_PEDIDO_INDENIZACAO"
+  },
+  {
+    "id": "12",
+    "expression": "#06_PEDIDO_AGENDAMENTO",
+    "answerCode": "06_PEDIDO_AGENDAMENTO"
+  },
+  {
+    "id": "13",
+    "expression": "#06_PEDIDO_AGENDAMENTO",
+    "answerCode": "06_PEDIDO_AGENDAMENTO"
+  },
+  {
+    "id": "14",
+    "expression": "#03_PAGAMENTO_PRAZO",
+    "answerCode": "03_PAGAMENTO_PRAZO"
+  },
+  {
+    "id": "15",
+    "expression": "#02_PAGAMENTO_DIVERGENCIA",
+    "answerCode": "02_PAGAMENTO_DIVERGENCIA"
+  },
+  {
+    "id": "16",
+    "expression": "#07_ASSISTENCIA_INFORMACAO_GERAL",
+    "answerCode": "07_ASSISTENCIA_INFORMACAO_GERAL"
+  },
+  {
+    "id": "17",
+    "expression": "#04_PEDIDO_TROCA_DEVOLUCAO",
+    "answerCode": "04_PEDIDO_TROCA_DEVOLUCAO"
+  },
+  {
+    "id": "18",
+    "expression": "#14_BOLETO_ATRASADO",
+    "answerCode": "14_BOLETO_ATRASADO"
+  },
+  {
+    "id": "19",
+    "expression": "#06_PEDIDO_AGENDAMENTO",
+    "answerCode": "06_PEDIDO_AGENDAMENTO"
+  },
+  {
+    "id": "20",
+    "expression": "#01_ARMAZENAMENTO",
+    "answerCode": "01_ARMAZENAMENTO"
+  },
+  {
+    "id": "21",
+    "expression": "#03_ASSISTENCIA_CONSERTO",
+    "answerCode": "03_ASSISTENCIA_CONSERTO"
+  },
+  {
+    "id": "22",
+    "expression": "#04_ASSISTENCIA_CONSUMO",
+    "answerCode": "04_ASSISTENCIA_CONSUMO"
+  },
+  {
+    "id": "23",
+    "expression": "#05_ASSISTENCIA_FUNCIONAMENTO",
+    "answerCode": "05_ASSISTENCIA_FUNCIONAMENTO"
+  },
+  {
+    "id": "24",
+    "expression": "#01_ASSISTENCIA_CONTATO",
+    "answerCode": "01_ASSISTENCIA_CONTATO"
+  },
+  {
+    "id": "25",
+    "expression": "#01_CADASTRO_TAXA",
+    "answerCode": "01_CADASTRO_TAXA"
+  },
+  {
+    "id": "26",
+    "expression": "#02_CADASTRO_RESET_SENHA",
+    "answerCode": "02_CADASTRO_RESET_SENHA"
+  },
+  {
+    "id": "27",
+    "expression": "#05_PEDIDO_ENTREGA",
+    "answerCode": "05_PEDIDO_ENTREGA"
+  },
+  {
+    "id": "28",
+    "expression": "#08_PEDIDO_FRETE",
+    "answerCode": "08_PEDIDO_FRETE"
+  },
+  {
+    "id": "29",
+    "expression": "#01_GERAL_PRODUTOS",
+    "answerCode": "01_GERAL_PRODUTOS"
+  },
+  {
+    "id": "30",
+    "expression": "#02_GERAL_COMPRA_FREEZER",
+    "answerCode": "02_GERAL_COMPRA_FREEZER"
+  },
+  {
+    "id": "31",
+    "expression": "#01_PAGAMENTO_CARTAO",
+    "answerCode": "01_PAGAMENTO_CARTAO"
+  },
+  {
+    "id": "32",
+    "expression": "#01_PEDIDO_SEM_BOLETO",
+    "answerCode": "01_PEDIDO_SEM_BOLETO"
+  },
+  {
+    "id": "33",
+    "expression": "#05_PEDIDO_ENTREGA",
+    "answerCode": "05_PEDIDO_ENTREGA"
+  },
+  {
+    "id": "34",
+    "expression": "#02_PEDIDO_VALOR",
+    "answerCode": "02_PEDIDO_VALOR"
+  },
+  {
+    "id": "35",
+    "expression": "#01_PRODUTOS_REUTILIZACAO",
+    "answerCode": "01_PRODUTOS_REUTILIZACAO"
+  },
+  {
+    "id": "36",
+    "expression": "#03_PEDIDO_COMPRA",
+    "answerCode": "03_PEDIDO_COMPRA"
+  },
+  {
+    "id": "37",
+    "expression": "#02_PRODUTOS_FREEZER_PROPRIO",
+    "answerCode": "02_PRODUTOS_FREEZER_PROPRIO"
+  },
+  {
+    "id": "38",
+    "expression": "#03_PRODUTOS_FREEZER_OUTROS_PRODUTOS",
+    "answerCode": "03_PRODUTOS_FREEZER_OUTROS_PRODUTOS"
+  },
+  {
+    "id": "39",
+    "expression": "#04_PRODUTOS_PRAZO_VALIDADE",
+    "answerCode": "04_PRODUTOS_PRAZO_VALIDADE"
+  },
+  {
+    "id": "40",
+    "expression": "#05_PRODUTOS_PROMOCOES_KIBON",
+    "answerCode": "05_PRODUTOS_PROMOCOES_KIBON"
+  },
+  {
+    "id": "41",
+    "expression": "#03_BOLETO_PROBLEMA",
+    "answerCode": "03_BOLETO_PROBLEMA"
+  },
+  {
+    "id": "42",
+    "expression": "#04_BOLETO_PRORROGACAO",
+    "answerCode": "04_BOLETO_PRORROGACAO"
+  },
+  {
+    "id": "43",
+    "expression": "#05_BOLETO_FATURAMENTO_ACORDO",
+    "answerCode": "05_BOLETO_FATURAMENTO_ACORDO"
+  },
+  {
+    "id": "44",
+    "expression": "#06_BOLETO_COMPROVANTE",
+    "answerCode": "06_BOLETO_COMPROVANTE"
+  },
+  {
+    "id": "45",
+    "expression": "#07_BOLETO_NEGOCIACAO",
+    "answerCode": "07_BOLETO_NEGOCIACAO"
+  },
+  {
+    "id": "46",
+    "expression": "#08_BOLETO_DUPLICIDADE",
+    "answerCode": "08_BOLETO_DUPLICIDADE"
+  },
+  {
+    "id": "47",
+    "expression": "#09_BOLETO_SERASA",
+    "answerCode": "09_BOLETO_SERASA"
+  },
+  {
+    "id": "48",
+    "expression": "#10_BOLETO_CONSULTA_DEPOSITOS",
+    "answerCode": "10_BOLETO_CONSULTA_DEPOSITOS"
+  },
+  {
+    "id": "49",
+    "expression": "#11_BOLETO_NOTAS_ABERTAS",
+    "answerCode": "11_BOLETO_NOTAS_ABERTAS"
+  },
+  {
+    "id": "50",
+    "expression": "#12_BOLETO_SEM_MERCADORIA",
+    "answerCode": "12_BOLETO_SEM_MERCADORIA"
+  },
+  {
+    "id": "58",
+    "expression": "#01_INSULT",
+    "answerCode": "01_INSULT"
+  },
+  {
+    "id": "59",
+    "expression": "#02_DESPEDIDA",
+    "answerCode": "02_DESPEDIDA"
+  },
+  {
+    "id": "60",
+    "expression": "#03_BOM_DIA",
+    "answerCode": "03_BOM_DIA"
+  },
+  {
+    "id": "61",
+    "expression": "#04_BOA_TARDE",
+    "answerCode": "04_BOA_TARDE"
+  },
+  {
+    "id": "62",
+    "expression": "#05_BOA_NOITE",
+    "answerCode": "05_BOA_NOITE"
+  },
+  {
+    "id": "63",
+    "expression": "#13_CONTATO_CAPGEMINI",
+    "answerCode": "13_CONTATO_CAPGEMINI"
+  },
+  {
+    "id": "64",
+    "expression": "#CRIAR_PEDIDO",
+    "answerCode": "CRIAR_PEDIDO"
+  },
+  {
+    "id": "65",
+    "expression": "#PEDIDO",
+    "answerCode": "PEDIDO"
+  },
+  {
+    "id": "66",
+    "expression": "#PEDIDO_COMPRA_FINALIZADA",
+    "answerCode": "PEDIDO_COMPRA_FINALIZADA"
+  },
+  {
+    "id": "67",
+    "expression": "#PEDIDO_COMPRA_TIMEOUT",
+    "answerCode": "PEDIDO_COMPRA_TIMEOUT"
+  },
+  {
+    "id": "68",
+    "expression": "#PEDIDO_COMPRA_TIMEOUT_FINALIZADO",
+    "answerCode": "PEDIDO_COMPRA_TIMEOUT_FINALIZADO"
+  },
+  {
+    "id": "69",
+    "expression": "#PEDIDO_PEDIR_AJUDA",
+    "answerCode": "PEDIDO_PEDIR_AJUDA"
+  },
+  {
+    "id": "70",
+    "expression": "#DESAMBIGUACAO_INDENIZACAO",
+    "answerCode": "DESAMBIGUACAO_INDENIZACAO"
+  },
+  {
+    "id": "71",
+    "expression": "#01_MAQUINA_DESAMBIGUACAO",
+    "answerCode": "01_MAQUINA_DESAMBIGUACAO"
+  },
+  {
+    "id": "72",
+    "expression": "#02_MAQUINA_TROCA_CONDENADA",
+    "answerCode": "02_MAQUINA_TROCA_CONDENADA"
+  },
+  {
+    "id": "73",
+    "expression": "#04_MAQUINA_RECOLHA",
+    "answerCode": "04_MAQUINA_RECOLHA"
+  },
+  {
+    "id": "74",
+    "expression": "#03_PEDIDO_INDENIZACAO",
+    "answerCode": "03_PEDIDO_INDENIZACAO"
+  },
+  {
+    "id": "82",
+    "expression": "#06_NASCIMENTO",
+    "answerCode": "06_NASCIMENTO"
+  },
+  {
+    "id": "83",
+    "expression": "#07_IDADE",
+    "answerCode": "07_IDADE"
+  },
+  {
+    "id": "84",
+    "expression": "#08_APELIDO",
+    "answerCode": "08_APELIDO"
+  },
+  {
+    "id": "85",
+    "expression": "#09_HOBBY",
+    "answerCode": "09_HOBBY"
+  },
+  {
+    "id": "86",
+    "expression": "#10_SORVETE_PREFERIDO",
+    "answerCode": "10_SORVETE_PREFERIDO"
+  },
+  {
+    "id": "87",
+    "expression": "#11_HISTORIA_KIBON",
+    "answerCode": "11_HISTORIA_KIBON"
+  },
+  {
+    "id": "88",
+    "expression": "#12_ASSEDIO",
+    "answerCode": "12_ASSEDIO"
+  },
+  {
+    "id": "89",
+    "expression": "#13_ELOGIO",
+    "answerCode": "13_ELOGIO"
+  },
+  {
+    "id": "90",
+    "expression": "#14_ RECLAMACAO",
+    "answerCode": "14_ RECLAMACAO"
+  },
+  {
+    "id": "91",
+    "expression": "#15_ASSUNTO_ALEATORIO",
+    "answerCode": "15_ASSUNTO_ALEATORIO"
+  },
+  {
+    "id": "92",
+    "expression": "#16_CANTADA",
+    "answerCode": "16_CANTADA"
+  },
+  {
+    "id": "93",
+    "expression": "#17_NOME",
+    "answerCode": "17_NOME"
+  },
+  {
+    "id": "94",
+    "expression": "#18_LOCAL",
+    "answerCode": "18_LOCAL"
+  },
+  {
+    "id": "95",
+    "expression": "#19_AGRADECIMENTO",
+    "answerCode": "19_AGRADECIMENTO"
+  },
+  {
+    "id": "96",
+    "expression": "#20_CONVITE",
+    "answerCode": "20_CONVITE"
   }
 ]
