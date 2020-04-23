@@ -1162,5 +1162,10 @@
     "id": "96",
     "expression": "#20_CONVITE",
     "answerCode": "20_CONVITE"
+  },
+  {
+    "id": "97",
+    "expression": "#DECISION_INT_SIM",
+    "answerCode": "21_AFIRMACAO"
   }
 ]
