@@ -232,7 +232,7 @@
             "id": "2.1.2",
             "expression": "default",
             "jumpTo": {
-              "node": "0",
+              "node": "3",
               "type": "CONDITION"
             }
           }
@@ -242,7 +242,7 @@
         "id": "2.2",
         "expression": "default",
         "jumpTo": {
-          "node": "0",
+          "node": "3",
           "type": "CONDITION"
         }
       }
@@ -807,16 +807,6 @@
     "id": "11",
     "expression": "#03_PEDIDO_INDENIZACAO",
     "answerCode": "03_PEDIDO_INDENIZACAO"
-  },
-  {
-    "id": "12",
-    "expression": "#06_PEDIDO_AGENDAMENTO",
-    "answerCode": "06_PEDIDO_AGENDAMENTO"
-  },
-  {
-    "id": "13",
-    "expression": "#06_PEDIDO_AGENDAMENTO",
-    "answerCode": "06_PEDIDO_AGENDAMENTO"
   },
   {
     "id": "14",
