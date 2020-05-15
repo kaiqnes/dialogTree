@@ -1,0 +1,56 @@
+[
+  {
+    "_AUTH_SMS_BEGIN": "",
+    "id": "8",
+    "expression": "default",
+    "answerCode": "AUTH_SMS",
+    "_HINT": "TRANSACIONAL - Verificaremos se o phoneNumber existe na unilever (principal e secundaria)",
+    "children": [
+      {
+        "_HINT": "phoneNumber + CNPJ existe na base principal = phoneNumber is mainNumber",
+        "id": "8.1",
+        "expression": "context.isMainNumber == true",
+        "jumpTo": {
+          "_TODO": "JUMP TO fluxoToken",
+          "node": "0",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "_HINT": "phoneNumber + CNPJ existe na base secundaria = phoneNumber is secondaryNumber",
+        "id": "8.2",
+        "expression": "context.isSecondaryNumber == true",
+        "jumpTo": {
+          "_TODO": "JUMP TO fluxoToken",
+          "node": "0",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "_HINT": "user não credenciado mas tem acesso ao mainNumber = enviar SMS para mainNumber",
+        "id": "8.3",
+        "expression": "#DECISION_INT_SIM",
+        "jumpTo": {
+          "_TODO": "JUMP TO fluxoToken using context.mainNumber",
+          "node": "0",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "_HINT": "phoneNumber + CNPJ existe na base principal = phoneNumber is mainNumber",
+        "id": "8.4",
+        "expression": "#CANCELAR_ATENDIMENTO",
+        "answerCode": "CANCELAR_ATENDIMENTO"
+      },
+      {
+        "id": "8.5",
+        "expression": "default",
+        "_TODO": "MSG de redundancia ou resetTree?",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      }
+    ]
+  }
+]

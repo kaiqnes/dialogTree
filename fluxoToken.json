@@ -1,0 +1,104 @@
+[
+  {
+    "_AUTH_SMS_END": "Realizaremos uma autenticação através de token SMS",
+    "id": "8.6.1",
+    "expression": "$context.extracted_entities.TOKEN_REGEX == true",
+    "answerCode": "TOKEN_INT",
+    "children": [
+      {
+        "id": "8.6.1.1",
+        "expression": "$context.errors.token == '3'",
+        "jumpTo": {
+          "_TODO": "JUMP TO TRANSBORDO_GENERICO",
+          "node": "2.1",
+          "type": "CONDITION"
+        }
+      },
+      {
+        "id": "8.6.1.2",
+        "expression": "$context.auth_sms == true",
+        "jumpTo": {
+          "_TODO": "CONTINUE",
+          "node": "5.1.1",
+          "type": "CONDITION"
+        },
+        "children": [
+          {
+            "id": "8.6.1.2.1",
+            "expression": "$context.boletoOrigin",
+            "jumpTo": {
+              "_TODO": "JUMP TO SEGUNDA_VIA_BOLETO",
+              "node": "5.1.1",
+              "type": "CONDITION"
+            }
+          },
+          {
+            "id": "8.6.1.2.2",
+            "expression": "$context.welcomeBackOrigin",
+            "jumpTo": {
+              "_TODO": "JUMP TO MENUS",
+              "node": "5.1.1",
+              "type": "CONDITION"
+            }
+          }
+        ]
+      },
+      {
+        "_HINT": "CRIAR CENÁRIO PARA VALIDAR ERRO - TOKEN INVALIDO - USAR NÓS FILHOS",
+        "id": "8.6.1.3",
+        "expression": "default",
+        "jumpTo": {
+          "node": "8.6.1",
+          "type": "CONDITION"
+        }
+      }
+    ]
+  },
+  {
+    "id": "8.6.2",
+    "expression": "#DECISION_INT_SIM",
+    "answerCode": "SMS_REENVIO",
+    "jumpTo": {
+      "node": "8.6.1",
+      "type": "WAIT_INPUT"
+    }
+  },
+  {
+    "id": "8.6.3",
+    "expression": "@1",
+    "jumpTo": {
+      "node": "8.6.2",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "8.6.4",
+    "expression": "#RECEBER_NOVO_SMS",
+    "jumpTo": {
+      "node": "8.6.2",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "8.6.5",
+    "expression": "#DECISION_INT_CANCELAR_ATENDIMENTO",
+    "answerCode": "CANCELAR_ATENDIMENTO"
+  },
+  {
+    "id": "8.6.6",
+    "expression": "@2",
+    "jumpTo": {
+      "node": "8.6.5",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "8.6.7",
+    "expression": "default",
+    "answerCode": "SMS_IDK",
+    "jumpTo": {
+      "node": "8.6.1",
+      "type": "WAIT_INPUT"
+    }
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
+    "id": "9.1",
+    "expression": "@1",
+    "answerCode": "CRIAR_PEDIDO"
+  },
+  {
+    "id": "9.2",
+    "expression": "#CRIAR_PEDIDO",
+    "jumpTo": {
+      "node": "9.1",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
+    "id": "9.3",
+    "expression": "@2",
+    "answerCode": "STATUS_DO_PEDIDO"
+  },
+  {
+    "id": "9.4",
+    "expression": "#STATUS_DO_PEDIDO",
+    "jumpTo": {
+      "node": "9.3",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
+    "id": "9.5",
+    "expression": "@3",
+    "answerCode": "03_PEDIDO_INDENIZACAO"
+  },
+  {
+    "id": "9.6",
+    "expression": "#03_PEDIDO_INDENIZACAO",
+    "jumpTo": {
+      "node": "9.5",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "9.7",
+    "expression": "default",
+    "jumpTo": {
+      "node": "0",
+      "type": "CONDITION"
+    }
+  }
+]

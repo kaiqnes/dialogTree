@@ -1,0 +1,197 @@
+{
+  "_AUTH_SIMPLE": "Realizaremos uma autenticação simples, associando o phoneNumber + um CNPJ",
+  "id": "7",
+  "expression": "#01_GREETING",
+  "answerCode": "01_GREETING",
+  "children": [
+    {
+      "id": "7.1",
+      "expression": "$context.helloMessage == true",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    },
+    {
+      "id": "7.2",
+      "expression": "$context.welcomeBackMessage == true",
+      "jumpTo": {
+        "_TODO": "JUMP TO auth_sms",
+        "node": "7.4.1.1.1",
+        "type": "CONDITION"
+      }
+    },
+    {
+      "id": "7.3",
+      "expression": "$context.errors.cnpj == '3'",
+      "jumpTo": {
+        "_TODO": "JUMP TO TRANSBORDO_GENERICO",
+        "node": "2.1",
+        "type": "CONDITION"
+      }
+    },
+    {
+      "id": "7.4",
+      "expression": "$context.extracted_entities.VALID_CNPJ == true",
+      "answerCode": "01_CNPJ_CONFIRMACAO",
+      "children": [
+        {
+          "id": "7.4.1",
+          "expression": "#DECISION_INT_SIM",
+          "answerCode": "SMS_AUTENTICACAO",
+          "children": [
+            {
+              "id": "7.4.1.1",
+              "expression": "$context.sjt_status == 'CNPJ_FOUND_ON_SJT'",
+              "jumpTo": {
+                "node": "7.4.1.1.1",
+                "type": "CONDITION"
+              },
+              "children": [
+                {
+                  "id": "7.4.1.1.1",
+                  "expression": "$context.fluxo == 'FLUXOA'",
+                  "jumpTo": {
+                    "_TODO": "JUMP TO MENUS",
+                    "node": "5.1.1",
+                    "type": "CONDITION"
+                  }
+                },
+                {
+                  "id": "7.4.1.1.2",
+                  "expression": "$context.fluxo == 'FLUXOB'",
+                  "jumpTo": {
+                    "_TODO": "JUMP TO MENUS",
+                    "node": "5.1.1.1",
+                    "type": "CONDITION"
+                  }
+                },
+                {
+                  "_HINT": "CRIAR CENÁRIO PARA VALIDAR ERRO - TOKEN INVALIDO - USAR NÓS FILHOS",
+                  "id": "7.4.1.1.3",
+                  "expression": "default",
+                  "jumpTo": {
+                    "node": "7.4.1",
+                    "type": "CONDITION"
+                  }
+                }
+              ]
+            },
+            {
+              "_HINT": "FLUXO PARA NOVOS CLIENTES",
+              "id": "7.4.1.2",
+              "expression": "$context.sjt_status == 'CNPJ_NOT_FOUND_ON_SJT'",
+              "jumpTo": {
+                "node": "7.4.1.2.1",
+                "type": "CONDITION"
+              },
+              "children": [
+                {
+                  "id": "7.4.1.2.1",
+                  "expression": "@1",
+                  "jumpTo": {
+                    "node": "7.4.3",
+                    "type": "RESPOND"
+                  }
+                },
+                {
+                  "id": "7.4.1.2.2",
+                  "expression": "#DIGITAR_NOVAMENTE",
+                  "jumpTo": {
+                    "node": "7.4.1.2.1",
+                    "type": "RESPOND"
+                  }
+                },
+                {
+                  "id": "7.4.1.2.3",
+                  "expression": "@2",
+                  "answerCode": "07_CNPJ_NOVO_CLIENTE"
+                },
+                {
+                  "id": "7.4.1.2.4",
+                  "expression": "#NAO_SOU_CLIENTE_KIBON",
+                  "jumpTo": {
+                    "node": "7.4.1.2.3",
+                    "type": "RESPOND"
+                  }
+                },
+                {
+                  "id": "7.4.1.2.5",
+                  "expression": "default",
+                  "jumpTo": {
+                    "node": "0",
+                    "type": "CONDITION"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7.4.1.3",
+              "expression": "$context.sjt_status == 'CNPJ_NOT_VALID'",
+              "jumpTo": {
+                "node": "7.1",
+                "type": "CONDITION"
+              }
+            }
+          ]
+        },
+        {
+          "id": "7.4.2",
+          "expression": "@1",
+          "jumpTo": {
+            "node": "7.4.1",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "7.4.3",
+          "expression": "#DECISION_INT_ALTERAR_CNPJ",
+          "answerCode": "04_CNPJ_ALTERAR",
+          "jumpTo": {
+            "node": "7.1",
+            "type": "WAIT_INPUT"
+          }
+        },
+        {
+          "id": "7.4.4",
+          "expression": "@2",
+          "jumpTo": {
+            "node": "7.4.3",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "7.4.5",
+          "expression": "#DECISION_INT_CANCELAR_ATENDIMENTO",
+          "answerCode": "CANCELAR_ATENDIMENTO"
+        },
+        {
+          "id": "7.4.6",
+          "expression": "@3",
+          "jumpTo": {
+            "node": "7.4.5",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "7.4.7",
+          "expression": "default",
+          "answerCode": "03_CNPJ_IDK",
+          "jumpTo": {
+            "node": "7.4.1",
+            "type": "WAIT_INPUT"
+          }
+        }
+      ]
+    },
+    {
+      "id": "7.5",
+      "expression": "default",
+      "answerCode": "01_CNPJ_IDK",
+      "jumpTo": {
+        "node": "7.1",
+        "type": "WAIT_INPUT"
+      }
+    }
+  ]
+}

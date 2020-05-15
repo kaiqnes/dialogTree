@@ -1,0 +1,49 @@
+[
+  {
+    "id": "10.1",
+    "expression": "@1",
+    "answerCode": "03_ASSISTENCIA_CONSERTO"
+  },
+  {
+    "id": "10.4",
+    "expression": "#03_ASSISTENCIA_CONSERTO",
+    "jumpTo": {
+      "node": "10.1",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "10.2",
+    "expression": "@2",
+    "answerCode": "02_MAQUINA_TROCA_CONDENADA"
+  },
+  {
+    "id": "10.5",
+    "expression": "#02_MAQUINA_TROCA_CONDENADA",
+    "jumpTo": {
+      "node": "10.2",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "10.3",
+    "expression": "@3",
+    "answerCode": "04_MAQUINA_RECOLHA"
+  },
+  {
+    "id": "10.6",
+    "expression": "#04_MAQUINA_RECOLHA",
+    "jumpTo": {
+      "node": "10.3",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "10.7",
+    "expression": "default",
+    "jumpTo": {
+      "node": "0",
+      "type": "CONDITION"
+    }
+  }
+]
