@@ -1,0 +1,28 @@
+{
+  "_NPS": "Node de NPS",
+  "id": "114",
+  "expression": "default",
+  "answerCode": "NPS_HUMANO",
+  "children": [
+    {
+      "id": "114.1",
+      "expression": "#NUMBERS_INT",
+      "answerCode": "MSG_COMENTARIO",
+      "children": [
+        {
+          "id": "114.1.1",
+          "expression": "default",
+          "answerCode": "MSG_AGRADECIMENT_NPS"
+        }
+      ]
+    },
+    {
+      "id": "114.2",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+}

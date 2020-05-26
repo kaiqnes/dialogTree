@@ -1,0 +1,371 @@
+{
+  "id": "13",
+  "expression": "#06_PEDIDO_AGENDAMENTO",
+  "answerCode": "06_PEDIDO_AGENDAMENTO"
+},
+{
+  "id": "14",
+  "expression": "#03_PAGAMENTO_PRAZO",
+  "answerCode": "03_PAGAMENTO_PRAZO"
+},
+{
+  "id": "15",
+  "expression": "#02_PAGAMENTO_DIVERGENCIA",
+  "answerCode": "02_PAGAMENTO_DIVERGENCIA"
+},
+{
+  "id": "16",
+  "expression": "#07_ASSISTENCIA_INFORMACAO_GERAL",
+  "answerCode": "07_ASSISTENCIA_INFORMACAO_GERAL"
+},
+{
+  "id": "17",
+  "expression": "#04_PEDIDO_TROCA_DEVOLUCAO",
+  "answerCode": "04_PEDIDO_TROCA_DEVOLUCAO"
+},
+{
+  "id": "18",
+  "expression": "#14_BOLETO_ATRASADO",
+  "answerCode": "14_BOLETO_ATRASADO"
+},
+{
+  "id": "19",
+  "expression": "#06_PEDIDO_AGENDAMENTO",
+  "answerCode": "06_PEDIDO_AGENDAMENTO"
+},
+{
+  "id": "20",
+  "expression": "#01_ARMAZENAMENTO",
+  "answerCode": "01_ARMAZENAMENTO"
+},
+{
+  "id": "21",
+  "expression": "#03_ASSISTENCIA_CONSERTO",
+  "answerCode": "03_ASSISTENCIA_CONSERTO"
+},
+{
+  "id": "22",
+  "expression": "#04_ASSISTENCIA_CONSUMO",
+  "answerCode": "04_ASSISTENCIA_CONSUMO"
+},
+{
+  "id": "23",
+  "expression": "#05_ASSISTENCIA_FUNCIONAMENTO",
+  "answerCode": "05_ASSISTENCIA_FUNCIONAMENTO"
+},
+{
+  "id": "24",
+  "expression": "#01_ASSISTENCIA_CONTATO",
+  "answerCode": "01_ASSISTENCIA_CONTATO"
+},
+{
+  "id": "25",
+  "expression": "#01_CADASTRO_TAXA",
+  "answerCode": "01_CADASTRO_TAXA"
+},
+{
+  "id": "26",
+  "expression": "#02_CADASTRO_RESET_SENHA",
+  "answerCode": "02_CADASTRO_RESET_SENHA"
+},
+{
+  "id": "27",
+  "expression": "#05_PEDIDO_ENTREGA",
+  "answerCode": "05_PEDIDO_ENTREGA"
+},
+{
+  "id": "28",
+  "expression": "#08_PEDIDO_FRETE",
+  "answerCode": "08_PEDIDO_FRETE"
+},
+{
+  "id": "29",
+  "expression": "#01_GERAL_PRODUTOS",
+  "answerCode": "01_GERAL_PRODUTOS"
+},
+{
+  "id": "30",
+  "expression": "#02_GERAL_COMPRA_FREEZER",
+  "answerCode": "02_GERAL_COMPRA_FREEZER"
+},
+{
+  "id": "31",
+  "expression": "#01_PAGAMENTO_CARTAO",
+  "answerCode": "01_PAGAMENTO_CARTAO"
+},
+{
+  "id": "32",
+  "expression": "#01_PEDIDO_SEM_BOLETO",
+  "answerCode": "01_PEDIDO_SEM_BOLETO"
+},
+{
+  "id": "33",
+  "expression": "#05_PEDIDO_ENTREGA",
+  "answerCode": "05_PEDIDO_ENTREGA"
+},
+{
+  "id": "34",
+  "expression": "#02_PEDIDO_VALOR",
+  "answerCode": "02_PEDIDO_VALOR"
+},
+{
+  "id": "35",
+  "expression": "#01_PRODUTOS_REUTILIZACAO",
+  "answerCode": "01_PRODUTOS_REUTILIZACAO"
+},
+{
+  "id": "36",
+  "expression": "#03_PEDIDO_COMPRA",
+  "answerCode": "03_PEDIDO_COMPRA"
+},
+{
+  "id": "37",
+  "expression": "#02_PRODUTOS_FREEZER_PROPRIO",
+  "answerCode": "02_PRODUTOS_FREEZER_PROPRIO"
+},
+{
+  "id": "38",
+  "expression": "#03_PRODUTOS_FREEZER_OUTROS_PRODUTOS",
+  "answerCode": "03_PRODUTOS_FREEZER_OUTROS_PRODUTOS"
+},
+{
+  "id": "39",
+  "expression": "#04_PRODUTOS_PRAZO_VALIDADE",
+  "answerCode": "04_PRODUTOS_PRAZO_VALIDADE"
+},
+{
+  "id": "40",
+  "expression": "#05_PRODUTOS_PROMOCOES_KIBON",
+  "answerCode": "05_PRODUTOS_PROMOCOES_KIBON"
+},
+{
+  "id": "41",
+  "expression": "#03_BOLETO_PROBLEMA",
+  "answerCode": "03_BOLETO_PROBLEMA"
+},
+{
+  "id": "43",
+  "expression": "#05_BOLETO_FATURAMENTO_ACORDO",
+  "answerCode": "05_BOLETO_FATURAMENTO_ACORDO"
+},
+{
+  "id": "44",
+  "expression": "#06_BOLETO_COMPROVANTE",
+  "answerCode": "06_BOLETO_COMPROVANTE"
+},
+{
+  "id": "45",
+  "expression": "#07_BOLETO_NEGOCIACAO",
+  "answerCode": "07_BOLETO_NEGOCIACAO"
+},
+{
+  "id": "46",
+  "expression": "#08_BOLETO_DUPLICIDADE",
+  "answerCode": "08_BOLETO_DUPLICIDADE"
+},
+{
+  "id": "47",
+  "expression": "#09_BOLETO_SERASA",
+  "answerCode": "09_BOLETO_SERASA"
+},
+{
+  "id": "48",
+  "expression": "#10_BOLETO_CONSULTA_DEPOSITOS",
+  "answerCode": "10_BOLETO_CONSULTA_DEPOSITOS"
+},
+{
+  "id": "49",
+  "expression": "#11_BOLETO_NOTAS_ABERTAS",
+  "answerCode": "11_BOLETO_NOTAS_ABERTAS"
+},
+{
+  "id": "50",
+  "expression": "#12_BOLETO_SEM_MERCADORIA",
+  "answerCode": "12_BOLETO_SEM_MERCADORIA"
+},
+{
+  "id": "51",
+  "expression": "#04_ASSISTENCIA_CONSUMO",
+  "answerCode": "04_ASSISTENCIA_CONSUMO"
+},
+{
+  "id": "52",
+  "expression": "#02_GERAL_COMPRA_FREEZER",
+  "answerCode": "02_GERAL_COMPRA_FREEZER"
+},
+{
+  "id": "53",
+  "expression": "#04_CADASTRO_PROBLEMA",
+  "answerCode": "04_CADASTRO_PROBLEMA"
+},
+{
+  "id": "54",
+  "expression": "#03_PEDIDO_INDENIZACAO",
+  "answerCode": "03_PEDIDO_INDENIZACAO"
+},
+{
+  "id": "55",
+  "expression": "#06_PEDIDO_AGENDAMENTO",
+  "answerCode": "06_PEDIDO_AGENDAMENTO"
+},
+,
+{
+  "id": "58",
+  "expression": "#01_INSULT",
+  "answerCode": "01_INSULT"
+},
+{
+  "id": "59",
+  "expression": "#02_DESPEDIDA",
+  "answerCode": "02_DESPEDIDA"
+},
+{
+  "id": "60",
+  "expression": "#03_BOM_DIA",
+  "answerCode": "03_BOM_DIA"
+},
+{
+  "id": "61",
+  "expression": "#04_BOA_TARDE",
+  "answerCode": "04_BOA_TARDE"
+},
+{
+  "id": "62",
+  "expression": "#05_BOA_NOITE",
+  "answerCode": "05_BOA_NOITE"
+},
+{
+  "id": "63",
+  "expression": "#13_CONTATO_CAPGEMINI",
+  "answerCode": "13_CONTATO_CAPGEMINI"
+},
+{
+  "id": "64",
+  "expression": "#CRIAR_PEDIDO",
+  "answerCode": "CRIAR_PEDIDO"
+},
+{
+  "id": "65",
+  "expression": "#PEDIDO",
+  "answerCode": "PEDIDO"
+},
+{
+  "id": "66",
+  "expression": "#PEDIDO_COMPRA_FINALIZADA",
+  "answerCode": "PEDIDO_COMPRA_FINALIZADA"
+},
+{
+  "id": "67",
+  "expression": "#PEDIDO_COMPRA_TIMEOUT",
+  "answerCode": "PEDIDO_COMPRA_TIMEOUT"
+},
+{
+  "id": "68",
+  "expression": "#PEDIDO_COMPRA_TIMEOUT_FINALIZADO",
+  "answerCode": "PEDIDO_COMPRA_TIMEOUT_FINALIZADO"
+},
+{
+  "id": "69",
+  "expression": "#PEDIDO_PEDIR_AJUDA",
+  "answerCode": "PEDIDO_PEDIR_AJUDA"
+},
+{
+  "id": "70",
+  "expression": "#DESAMBIGUACAO_INDENIZACAO",
+  "answerCode": "DESAMBIGUACAO_INDENIZACAO"
+},
+{
+  "id": "71",
+  "expression": "#01_MAQUINA_DESAMBIGUACAO",
+  "answerCode": "01_MAQUINA_DESAMBIGUACAO"
+},
+{
+  "id": "72",
+  "expression": "#02_MAQUINA_TROCA_CONDENADA",
+  "answerCode": "02_MAQUINA_TROCA_CONDENADA"
+},
+{
+  "id": "73",
+  "expression": "#04_MAQUINA_RECOLHA",
+  "answerCode": "04_MAQUINA_RECOLHA"
+},
+{
+  "id": "74",
+  "expression": "#03_PEDIDO_INDENIZACAO",
+  "answerCode": "03_PEDIDO_INDENIZACAO"
+},
+{
+  "id": "82",
+  "expression": "#06_NASCIMENTO",
+  "answerCode": "06_NASCIMENTO"
+},
+{
+  "id": "83",
+  "expression": "#07_IDADE",
+  "answerCode": "07_IDADE"
+},
+{
+  "id": "84",
+  "expression": "#08_APELIDO",
+  "answerCode": "08_APELIDO"
+},
+{
+  "id": "85",
+  "expression": "#09_HOBBY",
+  "answerCode": "09_HOBBY"
+},
+{
+  "id": "86",
+  "expression": "#10_SORVETE_PREFERIDO",
+  "answerCode": "10_SORVETE_PREFERIDO"
+},
+{
+  "id": "87",
+  "expression": "#11_HISTORIA_KIBON",
+  "answerCode": "11_HISTORIA_KIBON"
+},
+{
+  "id": "88",
+  "expression": "#12_ASSEDIO",
+  "answerCode": "12_ASSEDIO"
+},
+{
+  "id": "89",
+  "expression": "#13_ELOGIO",
+  "answerCode": "13_ELOGIO"
+},
+{
+  "id": "91",
+  "expression": "#15_ASSUNTO_ALEATORIO",
+  "answerCode": "15_ASSUNTO_ALEATORIO"
+},
+{
+  "id": "92",
+  "expression": "#16_CANTADA",
+  "answerCode": "16_CANTADA"
+},
+{
+  "id": "93",
+  "expression": "#17_NOME",
+  "answerCode": "17_NOME"
+},
+{
+  "id": "94",
+  "expression": "#18_LOCAL",
+  "answerCode": "18_LOCAL"
+},
+{
+  "id": "95",
+  "expression": "#19_AGRADECIMENTO",
+  "answerCode": "19_AGRADECIMENTO"
+},
+{
+  "id": "96",
+  "expression": "#20_CONVITE",
+  "answerCode": "20_CONVITE"
+},
+{
+  "id": "97",
+  "expression": "#DECISION_INT_SIM",
+  "answerCode": "21_AFIRMACAO"
+}

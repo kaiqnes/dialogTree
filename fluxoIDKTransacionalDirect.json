@@ -1,0 +1,139 @@
+{
+  "id": "0.7",
+  "expression": "$context.nao_entrar_organicamente == true",
+  "jumpTo": {
+    "node": "0.7.1",
+    "type": "CONDITION"
+  },
+  "children": [
+    {
+      "id": "0.7.1",
+      "expression": "$context.fluxo == 'FLUXOA'",
+      "jumpTo": {
+        "node": "0.7.1.1",
+        "type": "CONDITION"
+      },
+      "children": [
+        {
+          "id": "0.7.1.1",
+          "expression": "#PEDIDO",
+          "jumpTo": {
+            "node": "0.7.1.5",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.1.2",
+          "expression": "#01_MAQUINA_DESAMBIGUACAO",
+          "jumpTo": {
+            "node": "0.7.1.6",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.1.3",
+          "expression": "#02_ASSISTENCIA_LIMPEZA",
+          "jumpTo": {
+            "node": "0.7.1.7",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.1.4",
+          "expression": "#01_SEGVIA_BOLETO",
+          "jumpTo": {
+            "node": "0.7.1.8",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.1.5",
+          "expression": "@1",
+          "jumpTo": {
+            "node": "9",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.1.6",
+          "expression": "@2",
+          "jumpTo": {
+            "node": "10",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.1.7",
+          "expression": "@3",
+          "answerCode": "02_ASSISTENCIA_LIMPEZA"
+        },
+        {
+          "id": "0.7.1.8",
+          "expression": "@4",
+          "jumpTo": {
+            "node": "11",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.1.9",
+          "expression": "default",
+          "jumpTo": {
+            "node": "0",
+            "type": "CONDITION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0.7.2",
+      "expression": "$context.fluxo == 'FLUXOB'",
+      "jumpTo": {
+        "node": "0.7.2.1",
+        "type": "CONDITION"
+      },
+      "children": [
+        {
+          "id": "0.7.2.1",
+          "expression": "#PEDIDO",
+          "jumpTo": {
+            "node": "0.7.2.3",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.2.2",
+          "expression": "#01_SEGVIA_BOLETO",
+          "jumpTo": {
+            "node": "0.7.2.4",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.2.3",
+          "expression": "@1",
+          "jumpTo": {
+            "node": "9",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.2.4",
+          "expression": "@2",
+          "jumpTo": {
+            "node": "11",
+            "type": "RESPOND"
+          }
+        },
+        {
+          "id": "0.7.2.5",
+          "expression": "default",
+          "jumpTo": {
+            "node": "0",
+            "type": "CONDITION"
+          }
+        }
+      ]
+    }
+  ]
+}

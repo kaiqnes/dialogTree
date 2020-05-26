@@ -1,0 +1,522 @@
+{
+  "id": "90",
+  "expression": "#14_RECLAMACAO",
+  "answerCode": "14_RECLAMACAO",
+  "jumpTo": {
+    "node": "90.1",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "90.1",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "9.0.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "98",
+  "expression": "#03_CADASTRO_ALTERAR_DADOS",
+  "answerCode": "03_CADASTRO_ALTERAR_DADOS",
+  "jumpTo": {
+    "node": "98.1",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "98.1",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "98.2",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "99",
+  "expression": "#09_PEDIDO_PROBLEMA_SITE_APP",
+  "answerCode": "09_PEDIDO_PROBLEMA_SITE_APP",
+  "jumpTo": {
+    "node": "99.1",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "99.1",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "99.2",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "100",
+  "expression": "#12_PEDIDO_BONIFICACAO",
+  "answerCode": "12_PEDIDO_BONIFICACAO",
+  "jumpTo": {
+    "node": "100.1",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "100.1",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "100.2",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "101",
+  "expression": "#07_PRODUTOS_ERRO",
+  "answerCode": "07_PRODUTOS_ERRO",
+  "jumpTo": {
+    "node": "101.1",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "101.1",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "101.2",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "102",
+  "expression": "#06_SOLICITAR_VISITA",
+  "answerCode": "06_SOLICITAR_VISITA",
+  "jumpTo": {
+    "node": "1.0.2",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.2",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.2.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "103",
+  "expression": "#08_PRODUTOS_ESTRAGADO",
+  "answerCode": "08_PRODUTOS_ESTRAGADO",
+  "jumpTo": {
+    "node": "1.0.3",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.3",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.3.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "104",
+  "expression": "#10_PEDIDO_CANCELADO",
+  "answerCode": "10_PEDIDO_CANCELADO",
+  "jumpTo": {
+    "node": "1.0.4",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.4",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.4.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "105",
+  "expression": "#11_PEDIDO_CANCELAR",
+  "answerCode": "11_PEDIDO_CANCELAR",
+  "jumpTo": {
+    "node": "1.0.5",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.5",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.5.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "106",
+  "expression": "#13_PEDIDO_CONSULTA_ITENS",
+  "answerCode": "13_PEDIDO_CONSULTA_ITENS",
+  "jumpTo": {
+    "node": "1.0.6",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.6",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.6.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "107",
+  "expression": "#09_PRODUTOS_PROBLEMA_SITE",
+  "answerCode": "09_PRODUTOS_PROBLEMA_SITE",
+  "jumpTo": {
+    "node": "1.0.7",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.7",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.7.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "108",
+  "expression": "#02_ASSISTENCIA_LIMPEZA",
+  "answerCode": "02_ASSISTENCIA_LIMPEZA",
+  "jumpTo": {
+    "node": "1.0.8",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.8",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.8.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "109",
+  "expression": "#06_PEDIDO_AGENDAMENTO",
+  "answerCode": "06_PEDIDO_AGENDAMENTO",
+  "jumpTo": {
+    "node": "1.0.9",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.0.9",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.0.9.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "110",
+  "expression": "#07_PEDIDO_ENTREGA_HORARIO",
+  "answerCode": "07_PEDIDO_ENTREGA_HORARIO",
+  "jumpTo": {
+    "node": "1.1.0",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.1.0",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.1.0.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "111",
+  "expression": "#14_PEDIDO_CONSULTA_BONIFICACAO",
+  "answerCode": "14_PEDIDO_CONSULTA_BONIFICACAO",
+  "jumpTo": {
+    "node": "1.1.1",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.1.1",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.1.1.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "112",
+  "expression": "#STATUS_DO_PEDIDO",
+  "answerCode": "STATUS_DO_PEDIDO",
+  "jumpTo": {
+    "node": "1.1.2",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.1.2",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.1.2.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "113",
+  "expression": "#04_PEDIDO_TROCA_DEVOLUCAO",
+  "answerCode": "04_PEDIDO_TROCA_DEVOLUCAO",
+  "jumpTo": {
+    "node": "1.1.3",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.1.3",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_S chamapo pelos IM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.1.3.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+},
+{
+  "id": "114",
+  "expression": "#06_PRODUTOS_TROCA_ENDERECO_PEDIDO",
+  "answerCode": "06_PRODUTOS_TROCA_ENDERECO_PEDIDO",
+  "jumpTo": {
+    "node": "1.1.4",
+    "type": "WAIT_INPUT"
+  },
+  "children": [
+    {
+      "_HINT": "Caso user tenha digitado sim",
+      "id": "1.1.4",
+      "expression": "#DECISION_INT_SIM",
+      "answerCode": "TRANSBORDO_SUGERIDO_SIM",
+      "jumpTo": {
+        "node": "0",
+        "type": "WAIT_INPUT"
+      }
+    },
+    {
+      "id": "1.1.4.0",
+      "expression": "default",
+      "jumpTo": {
+        "node": "0",
+        "type": "CONDITION"
+      }
+    }
+  ]
+}
