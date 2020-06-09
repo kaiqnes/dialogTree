@@ -1,0 +1,57 @@
+{
+    "_NPS": "Node de NPS",
+    "id": "114",
+    "expression": "$context.npsHumano == true",
+    "answerCode": "NPS_HUMANO",
+    "children": [
+      {
+        "id": "114.1",
+        "expression": "#NUMBERS_INT",
+        "answerCode": "MSG_COMENTARIO",
+        "children": [
+          {
+            "id": "114.1.1",
+            "expression": "default",
+            "answerCode": "MSG_AGRADECIMENTO_NPS_HUMANO"
+          }
+        ]
+      },
+      {
+        "id": "114.2",
+        "expression": "default",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      }
+    ]
+  },
+  
+{
+    "_NPS": "Node de NPS BOT",
+    "id": "115",
+    "expression": "$context.npsBOT == true",
+    "answerCode": "NPS_BOT",
+    "children": [
+      {
+        "id": "115.1",
+        "expression": "#NUMBERS_INT",
+        "answerCode": "MSG_COMENTARIO",
+        "children": [
+          {
+            "id": "115.1.1",
+            "expression": "default",
+            "answerCode": "MSG_AGRADECIMENTO_NPS_BOT"
+          }
+        ]
+      },
+      {
+        "id": "115.2",
+        "expression": "default",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      }
+    ]
+  }

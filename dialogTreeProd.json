@@ -306,7 +306,7 @@
     },
     "children": [
       {
-        "_DESCRIPTION": "VALIDADOR INICIAL - esse nó vai segurar a primeira interação (sessão) do user e verificar se ele já digitou o CNPJ ou não",
+        "_DESCRIPTION": "VALIDADOR INICIAL - esse n? vai segurar a primeira intera??o (sess?o) do user e verificar se ele j? digitou o CNPJ ou n?o",
         "id": "1.1",
         "expression": "$context.auth_simple == true",
         "jumpTo": {
@@ -315,7 +315,7 @@
         }
       },
       {
-        "_DESCRIPTION": "User não finalizou fluxo de auth_simple",
+        "_DESCRIPTION": "User n?o finalizou fluxo de auth_simple",
         "id": "1.2",
         "expression": "default",
         "jumpTo": {
@@ -353,7 +353,7 @@
     },
     "children": [
       {
-        "_HINT": "Caso esteja dentro do horário de atendimento",
+        "_HINT": "Caso esteja dentro do hor?rio de atendimento",
         "id": "2.1",
         "expression": "$context.transbordavel == true",
         "jumpTo": {
@@ -392,7 +392,7 @@
     ]
   },
   {
-    "_TRANSBORDO_SUGERIDO": "Similar ao transbordo genérico, porém direciona p/ filas especificas",
+    "_TRANSBORDO_SUGERIDO": "Similar ao transbordo gen?rico, por?m direciona p/ filas especificas",
     "id": "3",
     "expression": "$context.suggestTransbordo == true",
     "jumpTo": {
@@ -401,7 +401,7 @@
     },
     "children": [
       {
-        "_HINT": "Caso esteja dentro do horário de atendimento",
+        "_HINT": "Caso esteja dentro do hor?rio de atendimento",
         "id": "3.1",
         "expression": "$context.transbordavel == true",
         "jumpTo": {
@@ -436,13 +436,13 @@
     ]
   },
   {
-    "_TRANSBORDO_SOLICITADO": "O usuário solicita o transbordo. É direcionado para a fila 'outros'. Não necessita confirmação",
+    "_TRANSBORDO_SOLICITADO": "O usu?rio solicita o transbordo. ? direcionado para a fila 'outros'. N?o necessita confirma??o",
     "id": "4",
     "expression": "#TRANSBORDO_SOLICITADO",
     "answerCode": "TRANSBORDO_SOLICITADO"
   },
   {
-    "_MENUS": "Exibe menus diferentes de acordo com as informações que temos no context",
+    "_MENUS": "Exibe menus diferentes de acordo com as informa??es que temos no context",
     "id": "5",
     "expression": "#04_MENU_PRINCIPAL",
     "jumpTo": {
@@ -590,7 +590,7 @@
     "answerCode": "CANCELAR_ATENDIMENTO"
   },
   {
-    "_AUTH_SIMPLE": "Realizaremos uma autenticação simples, associando o phoneNumber + um CNPJ",
+    "_AUTH_SIMPLE": "Realizaremos uma autentica??o simples, associando o phoneNumber + um CNPJ",
     "id": "7",
     "expression": "#01_GREETING",
     "answerCode": "01_GREETING",
@@ -655,7 +655,7 @@
                     }
                   },
                   {
-                    "_HINT": "CRIAR CENÁRIO PARA VALIDAR ERRO - TOKEN INVALIDO - USAR NÓS FILHOS",
+                    "_HINT": "CRIAR CEN?RIO PARA VALIDAR ERRO - TOKEN INVALIDO - USAR N?S FILHOS",
                     "id": "7.4.1.1.3",
                     "expression": "default",
                     "jumpTo": {
@@ -809,7 +809,7 @@
         }
       },
       {
-        "_HINT": "phoneNumber + CNPJ não existe nas bases porém cadastro tem mainNumber = verificar user tem acesso",
+        "_HINT": "phoneNumber + CNPJ n?o existe nas bases por?m cadastro tem mainNumber = verificar user tem acesso",
         "id": "8.3",
         "expression": "$context.askPermission == true",
         "jumpTo": {
@@ -818,7 +818,7 @@
         },
         "children": [
           {
-            "_HINT": "user não credenciado mas tem acesso ao mainNumber = enviar SMS para mainNumber",
+            "_HINT": "user n?o credenciado mas tem acesso ao mainNumber = enviar SMS para mainNumber",
             "id": "8.3.1",
             "expression": "#DECISION_INT_SIM",
             "answerCode": "SMS_ENVIO_MAIN_NUMBER",
@@ -829,7 +829,7 @@
             }
           },
           {
-            "_HINT": "user não credenciado e sem acesso ao mainNumber = transbordar",
+            "_HINT": "user n?o credenciado e sem acesso ao mainNumber = transbordar",
             "id": "8.3.2",
             "expression": "#NAO",
             "answerCode": "SEM_ACESSO_NUMERO_PRINCIPAL"
@@ -1067,7 +1067,7 @@
                                 "answerCode": "CANCELAR_MENU_BOLETO"
                               },
                               {
-                                "_HINT": "CRIAR CENÁRIO PARA VALIDAR ERROS",
+                                "_HINT": "CRIAR CEN?RIO PARA VALIDAR ERROS",
                                 "id": "8.6.1.2.1.4.1.3",
                                 "expression": "#NUMBERS_INT",
                                 "jumpTo": {
@@ -1163,7 +1163,7 @@
                 ]
               },
               {
-                "_HINT": "CRIAR CENÁRIO PARA VALIDAR ERRO - TOKEN INVALIDO - USAR NÓS FILHOS",
+                "_HINT": "CRIAR CEN?RIO PARA VALIDAR ERRO - TOKEN INVALIDO - USAR N?S FILHOS",
                 "id": "8.6.1.3",
                 "expression": "default",
                 "jumpTo": {
@@ -1261,7 +1261,7 @@
         "children": [
           {
             "_HINT": "TRANSACIONAL. Recebe link infracommerce",
-            "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+            "TODO": "Mudar expression para validar INTENT ao inv?s de ENTITY",
             "id": "9.4.1",
             "expression": "@1",
             "answerCode": "CRIAR_PEDIDO_SITE",
@@ -1272,13 +1272,13 @@
                 "answerCode": "CRIAR_PEDIDO_SITE_TIMEOUT",
                 "children": [
                   {
-                    "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+                    "TODO": "Mudar expression para validar INTENT ao inv?s de ENTITY",
                     "id": "9.4.1.1.1",
                     "expression": "@1",
                     "answerCode": "CRIAR_PEDIDO_SITE_COMPRA_FINALIZADA"
                   },
                   {
-                    "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+                    "TODO": "Mudar expression para validar INTENT ao inv?s de ENTITY",
                     "id": "9.4.1.1.2",
                     "expression": "@2",
                     "answerCode": "CRIAR_PEDIDO_SITE_AJUDA"
@@ -1304,8 +1304,8 @@
             ]
           },
           {
-            "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
-            "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+            "_HINT": "TRANSACIONAL. Verifica se est? dentro do hor?rio de atendimento",
+            "TODO": "Mudar expression para validar INTENT ao inv?s de ENTITY",
             "id": "9.4.2",
             "expression": "@2",
             "answerCode": "CRIAR_PEDIDO_WHATSAPP"
@@ -1584,7 +1584,7 @@
                     "answerCode": "CANCELAR_MENU_BOLETO"
                   },
                   {
-                    "_HINT": "CRIAR CENÁRIO PARA VALIDAR ERROS",
+                    "_HINT": "CRIAR CEN?RIO PARA VALIDAR ERROS",
                     "id": "11.1.4.2.3",
                     "expression": "#NUMBERS_INT",
                     "jumpTo": {
@@ -1653,10 +1653,137 @@
     ]
   },
   {
-    "_FLUXO_PEDIDO_NEW": "Descontinuado - Nó de pedidos 9",
+    "_FLUXO_PEDIDO_NEW": "Novo modulo de pedido",
     "id": "12",
     "expression": "$context.nao_entrar_organicamente == true",
-    "answerCode": "PEDIDO"
+    "answerCode": "PEDIDO",
+    "children": [
+      {
+        "id": "12.1",
+        "_TODO": "CRIAR ESSA INTENT",
+        "expression": "@1",
+        "answerCode": "CRIAR_PEDIDO_QUEM",
+        "children": [
+          {
+            "_DESCRIPTION": "Se ele escolher criar pedido com ajuda do humano",
+            "_TODO": "ALTERAR NOME DA INTENT DE 'CRIAR_PEDIDO' PARA 'CRIAR_PEDIDO_HUMANO'",
+            "id": "12.1.1",
+            "expression": "@1",
+            "answerCode": "CRIAR_PEDIDO_HUMANO"
+          },
+          {
+            "_DESCRIPTION": "Se ele escolher criar pedido atravez do site",
+            "_TODO": "CRIAR ESSA INTENT",
+            "id": "12.1.2",
+            "expression": "@1",
+            "answerCode": "CRIAR_PEDIDO_ECOMMERCE",
+            "children": [
+              {
+                "_DESCRIPTION": "Caso tenha passado 15m e a infracommerce n?o tenha devolvido nenhuma resposta, o sessionExpirationJob vai mandar uma msg simulando o user p/ o nosso endpoint com o texto '983'",
+                "_TODO": "CRIAR ESSA INTENT",
+                "id": "12.1.2.1",
+                "expression": "@983",
+                "answerCode": "CRIAR_PEDIDO_TIMEOUT",
+                "children": [
+                  {
+                    "id": "12.1.2.1.1",
+                    "expression": "@1",
+                    "answerCode": "PEDIDO_COMPRA_TIMEOUT_FINALIZADO"
+                  },
+                  {
+                    "id": "12.1.2.1.2",
+                    "expression": "@2",
+                    "answerCode": "PEDIDO_PEDIR_AJUDA"
+                  },
+                  {
+                    "id": "12.1.2.1.3",
+                    "expression": "#PEDIDO_COMPRA_FINALIZADA",
+                    "jumpTo": {
+                      "node": "12.1.2.1.1",
+                      "type": "RESPOND"
+                    }
+                  },
+                  {
+                    "id": "12.1.2.1.4",
+                    "expression": "#PEDIDO_PEDIR_AJUDA",
+                    "jumpTo": {
+                      "node": "12.1.2.1.2",
+                      "type": "RESPOND"
+                    }
+                  },
+                  {
+                    "id": "12.1.2.1.5",
+                    "expression": "default",
+                    "jumpTo": {
+                      "node": "0",
+                      "type": "CONDITION"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "12.1.2.2",
+                "expression": "default",
+                "jumpTo": {
+                  "node": "0",
+                  "type": "CONDITION"
+                }
+              }
+            ]
+          },
+          {
+            "id": "12.1.3",
+            "expression": "default",
+            "jumpTo": {
+              "node": "0",
+              "type": "CONDITION"
+            }
+          }
+        ]
+      },
+      {
+        "id": "12.2",
+        "expression": "#CRIAR_PEDIDO",
+        "jumpTo": {
+          "node": "12.1",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "12.3",
+        "expression": "@2",
+        "answerCode": "STATUS_DO_PEDIDO"
+      },
+      {
+        "id": "12.4",
+        "expression": "#STATUS_DO_PEDIDO",
+        "jumpTo": {
+          "node": "12.3",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "12.5",
+        "expression": "@3",
+        "answerCode": "03_PEDIDO_INDENIZACAO"
+      },
+      {
+        "id": "12.6",
+        "expression": "#03_PEDIDO_INDENIZACAO",
+        "jumpTo": {
+          "node": "12.5",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "12.7",
+        "expression": "default",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      }
+    ]
   },
   {
     "id": "13",
@@ -1945,53 +2072,48 @@
     "id": "70",
     "expression": "#DESAMBIGUACAO_INDENIZACAO",
     "answerCode": "DESAMBIGUACAO_INDENIZACAO",
-     "children": [
-       
-                  {
-                    "id": "70.0",
-                    "expression": "#02_MAQUINA_TROCA_CONDENADA",
-                    "jumpTo": {
-                      "node": "70.1",
-                      "type": "RESPOND"
-                    }
-                  },
-                  
-                  {
-                    "id": "70.1",
-                    "expression": "@1",
-                    "jumpTo": {
-                      "node": "10.5",
-                      "type": "RESPOND"
-                    }
-                    
-                  },
-                  
-                  {
-                    "id": "70.0.0",
-                    "expression": "#03_PEDIDO_INDENIZACAO",
-                    "jumpTo": {
-                      "node": "70.2",
-                      "type": "RESPOND"
-                    }
-                  },
-                
-                  {
-                    "id": "70.2",
-                    "expression": "@2",
-                    "jumpTo": {
-                      "node": "9.5",
-                      "type": "RESPOND"
-                    }
-                  },
-                  {
-                      "id": "70.3",
-                      "expression": "default",
-                      "jumpTo": {
-                        "node": "0",
-                        "type": "CONDITION"
-                }
-            }
-        ]
+    "children": [
+      {
+        "id": "70.0",
+        "expression": "#02_MAQUINA_TROCA_CONDENADA",
+        "jumpTo": {
+          "node": "70.1",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "70.1",
+        "expression": "@1",
+        "jumpTo": {
+          "node": "10.5",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "70.0.0",
+        "expression": "#03_PEDIDO_INDENIZACAO",
+        "jumpTo": {
+          "node": "70.2",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "70.2",
+        "expression": "@2",
+        "jumpTo": {
+          "node": "9.5",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "70.3",
+        "expression": "default",
+        "jumpTo": {
+          "node": "0",
+          "type": "CONDITION"
+        }
+      }
+    ]
   },
   {
     "id": "71",

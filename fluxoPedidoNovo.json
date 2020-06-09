@@ -1,0 +1,118 @@
+[
+  {
+    "id": "9.1",
+    "expression": "#CRIAR_PEDIDO",
+    "jumpTo": {
+      "node": "9.4",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "9.2",
+    "expression": "#STATUS_DO_PEDIDO",
+    "jumpTo": {
+      "node": "9.5",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "9.3",
+    "expression": "#03_PEDIDO_INDENIZACAO",
+    "jumpTo": {
+      "node": "9.6",
+      "type": "RESPOND"
+    }
+  },
+  {
+    "id": "9.4",
+    "expression": "@1",
+    "answerCode": "CRIAR_PEDIDO_MENU",
+    "children": [
+      {
+        "_HINT": "TRANSACIONAL. Recebe link infracommerce",
+        "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+        "id": "9.4.1",
+        "expression": "@1",
+        "answerCode": "CRIAR_PEDIDO_SITE",
+        "children": [
+          {
+            "id": "9.4.1.1",
+            "expression": "$context.pendingSummary == true",
+            "answerCode": "CRIAR_PEDIDO_SITE_TIMEOUT",
+            "children": [
+              {
+                "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+                "id": "9.4.1.1.1",
+                "expression": "@1",
+                "answerCode": "CRIAR_PEDIDO_SITE_COMPRA_FINALIZADA"
+              },
+              {
+                "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+                "id": "9.4.1.1.2",
+                "expression": "@2",
+                "answerCode": "CRIAR_PEDIDO_SITE_AJUDA"
+              },
+              {
+                "id": "9.4.1.1.3",
+                "expression": "@1",
+                "jumpTo": {
+                  "node": "9.4.1.1.1",
+                  "type": "RESPOND"
+                }
+              },
+              {
+                "id": "9.4.1.1.4",
+                "expression": "@2",
+                "jumpTo": {
+                  "node": "9.4.1.1.2",
+                  "type": "RESPOND"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_HINT": "TRANSACIONAL. Verifica se está dentro do horário de atendimento",
+        "TODO": "Mudar expression para validar INTENT ao invés de ENTITY",
+        "id": "9.4.2",
+        "expression": "@2",
+        "answerCode": "CRIAR_PEDIDO_WHATSAPP"
+      },
+      {
+        "id": "9.4.3",
+        "expression": "@1",
+        "jumpTo": {
+          "node": "9.4.1",
+          "type": "RESPOND"
+        }
+      },
+      {
+        "id": "9.4.4",
+        "expression": "@2",
+        "jumpTo": {
+          "node": "9.4.2",
+          "type": "RESPOND"
+        }
+      }
+    ]
+  },
+  {
+    "id": "9.5",
+    "expression": "@2",
+    "answerCode": "STATUS_DO_PEDIDO"
+  },
+  {
+    "id": "9.6",
+    "expression": "@3",
+    "answerCode": "03_PEDIDO_INDENIZACAO"
+  },
+  {
+    "id": "9.7",
+    "expression": "default",
+    "jumpTo": {
+      "node": "0",
+      "type": "CONDITION"
+    }
+  }
+]
